@@ -134,13 +134,13 @@
             },
             {
               "type": "SYMBOL",
-              "name": "index"
+              "name": "_index"
             }
           ]
         }
       }
     },
-    "index": {
+    "_index": {
       "type": "SEQ",
       "members": [
         {
@@ -148,8 +148,13 @@
           "value": "["
         },
         {
-          "type": "PATTERN",
-          "value": "\\d+"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\d+"
+          },
+          "named": true,
+          "value": "index"
         },
         {
           "type": "STRING",
@@ -189,8 +194,20 @@
           "value": "${"
         },
         {
-          "type": "SYMBOL",
-          "name": "_content"
+          "type": "REPEAT1",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "key"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "substitution"
+              }
+            ]
+          }
         },
         {
           "type": "CHOICE",
@@ -210,22 +227,6 @@
         }
       ]
     },
-    "_content": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "key"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "substitution"
-          }
-        ]
-      }
-    },
     "_default": {
       "type": "SEQ",
       "members": [
@@ -237,8 +238,24 @@
           "type": "FIELD",
           "name": "default",
           "content": {
-            "type": "SYMBOL",
-            "name": "_content"
+            "type": "REPEAT1",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_char"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "escape"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "substitution"
+                }
+              ]
+            }
           }
         }
       ]

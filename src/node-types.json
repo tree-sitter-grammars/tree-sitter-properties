@@ -24,11 +24,6 @@
     }
   },
   {
-    "type": "index",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "key",
     "named": true,
     "fields": {},
@@ -75,7 +70,7 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "escape",
             "named": true
           },
           {
@@ -149,6 +144,10 @@
   },
   {
     "type": "comment",
+    "named": true
+  },
+  {
+    "type": "index",
     "named": true
   },
   {
