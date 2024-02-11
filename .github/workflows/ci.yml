@@ -2,12 +2,14 @@ name: Test grammar
 
 on:
   push:
+    branches: ["*"]
     paths:
       - grammar.js
       - src/**
       - bindings/**
       - binding.gyp
   pull_request:
+    branches: ["*"]
     paths:
       - grammar.js
       - src/**
