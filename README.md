@@ -1,6 +1,10 @@
 # tree-sitter-properties
 
-[![CI][badge]](https://github.com/ObserverOfTime/tree-sitter-properties/actions)
+[![CI][ci]](https://github.com/tree-sitter-grammars/tree-sitter-properties/actions/workflows/ci.yml)
+[![discord][discord]](https://discord.gg/w7nTvsVJhm)
+[![matrix][matrix]](https://matrix.to/#/#nvim-treesitter:matrix.org)
+[![npm][npm]](https://www.npmjs.com/package/tree-sitter-properties)
+[![crates][crates]](https://crates.io/crates/tree-sitter-properties)
 
 A tree-sitter parser for Java properties files.
 
@@ -15,5 +19,10 @@ A tree-sitter parser for Java properties files.
 - [x] Neovim
 - [ ] Helix
 - [ ] Emacs
+- [ ] Zed
 
-[badge]: https://badgen.net/github/checks/ObserverOfTime/tree-sitter-properties?label=CI&icon=github
+[ci]: https://img.shields.io/github/actions/workflow/status/tree-sitter-grammars/tree-sitter-properties/ci.yml?logo=github&label=CI
+[discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=tree-sitter
+[matrix]: https://img.shields.io/matrix/nvim-treesitter%3Amatrix.org?logo=matrix&label=nvim-treesitter
+[npm]: https://img.shields.io/npm/v/tree-sitter-properties?logo=npm
+[crates]: https://img.shields.io/crates/v/tree-sitter-properties?logo=rust
