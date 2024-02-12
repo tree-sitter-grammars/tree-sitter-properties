@@ -18,6 +18,6 @@ on:
 
 jobs:
   test:
-    uses: tree-sitter-grammars/.github/.github/workflows/ci.yml@workflows
+    uses: tree-sitter-grammars/.github/.github/workflows/ci.yml@main
     with:
       test-library: true
