@@ -1,18 +1,23 @@
 {
   "name": "tree-sitter-properties",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
-  "description": "properties grammar for tree-sitter",
+  "description": "Java properties grammar for tree-sitter",
   "repository": "tree-sitter-grammars/tree-sitter-properties",
   "author": {
     "name": "ObserverOfTime",
     "email": "chronobserver@disroot.org",
     "url": "https://observeroftime.github.io/"
   },
+  "funding": {
+    "url": "https://github.com/sponsors/ObserverOfTime",
+    "type": "github"
+  },
   "keywords": [
     "tree-sitter",
     "parser",
-    "lexer"
+    "lexer",
+    "properties"
   ],
   "scripts": {
     "generate": "tree-sitter generate",
@@ -24,7 +29,7 @@
     "nan": "^2.18.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "~0.20.8"
+    "tree-sitter-cli": "~0.21.0-pre-release-1"
   },
   "tree-sitter": [
     {
