@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-properties"
 description = "Java properties grammar for the tree-sitter parsing library"
-version = "0.1.2"
+version = "0.2.0"
 keywords = ["incremental", "parsing", "properties"]
 categories = ["parsing", "text-editors"]
 repository = "https://github.com/tree-sitter-grammars/tree-sitter-properties"
