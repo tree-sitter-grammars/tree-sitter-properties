@@ -59,20 +59,19 @@ module.exports = grammar({
         $.key,
         $.substitution
       )),
-      optional($._default),
+      optional(choice(
+        $._default,
+        $._secret
+      )),
       '}'
     ),
 
-    _default: $ => seq(
-      ':',
-      field(
-        'default',
-        repeat1(choice(
-          $._char,
-          $.escape,
-          $.substitution
-        )),
-      )
+    _default: $ => seq(':', field('default', $._content)),
+
+    _secret: $ => seq('::', alias($._content, $.secret)),
+
+    _content: $ => repeat1(
+      choice($._char, $.escape, $.substitution)
     ),
 
     _linebreak: $ => seq('\\', $._eol),

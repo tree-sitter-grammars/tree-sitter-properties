@@ -157,6 +157,8 @@ application.host=${HOST:${remote.host}}
 
 composed=${my.prop${compose}}
 
+my.secret=${aes-gcm-nopadding::DJNrZ6LfpupFv6QbXyXhvzD8eVDnDa_kTliQBpuzTobDZxlg}
+
 -----
 
 (file
@@ -181,7 +183,13 @@ composed=${my.prop${compose}}
       (substitution
         (key)
         (substitution
-          (key))))))
+          (key)))))
+  (property
+    (key)
+    (value
+      (substitution
+        (key)
+        (secret)))))
 
 ==================
 Indexed Properties

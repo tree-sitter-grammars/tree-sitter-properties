@@ -12,6 +12,11 @@
 ((substitution (key) @constant)
   (#match? @constant "^[A-Z0-9_]+"))
 
+(substitution
+  (key) @function
+  "::" @punctuation.special
+  (secret) @embedded)
+
 (property [ "=" ":" ] @operator)
 
 [ "${" "}" ] @punctuation.special

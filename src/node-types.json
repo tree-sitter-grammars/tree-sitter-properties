@@ -67,6 +67,25 @@
     }
   },
   {
+    "type": "secret",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "substitution",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "substitution",
     "named": true,
     "fields": {
@@ -91,6 +110,10 @@
       "types": [
         {
           "type": "key",
+          "named": true
+        },
+        {
+          "type": "secret",
           "named": true
         },
         {
@@ -129,6 +152,10 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {
