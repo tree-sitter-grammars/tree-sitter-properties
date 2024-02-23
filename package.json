@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-properties",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "description": "Java properties grammar for tree-sitter",
   "repository": "tree-sitter-grammars/tree-sitter-properties",
@@ -20,7 +20,7 @@
     "properties"
   ],
   "scripts": {
-    "generate": "tree-sitter generate",
+    "build": "tree-sitter generate --no-bindings",
     "parse": "tree-sitter parse",
     "test": "tree-sitter test"
   },
@@ -29,11 +29,13 @@
     "nan": "^2.18.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "~0.21.0-pre-release-1"
+    "tree-sitter-cli": "~0.21.0"
   },
   "tree-sitter": [
     {
       "scope": "text.properties",
+      "highlights": "queries/highlights.scm",
+      "tags": "queries/tags.scm",
       "file-types": ["properties"]
     }
   ]
