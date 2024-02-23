@@ -40,8 +40,17 @@
             ]
           },
           {
-            "type": "PATTERN",
-            "value": "\\r|\\n|\\r\\n"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_eol"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_eof"
+              }
+            ]
           }
         ]
       }
@@ -150,8 +159,11 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "\\d+"
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_char"
+            }
           },
           "named": true,
           "value": "index"
@@ -260,12 +272,25 @@
         }
       ]
     },
+    "_linebreak": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\\"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_eol"
+        }
+      ]
+    },
     "escape": {
       "type": "CHOICE",
       "members": [
         {
           "type": "PATTERN",
-          "value": "\\\\."
+          "value": "\\\\[^\\r\\n]"
         },
         {
           "type": "PATTERN",
@@ -276,19 +301,6 @@
     "comment": {
       "type": "PATTERN",
       "value": "[#!].*"
-    },
-    "_linebreak": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "\\"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\r|\\n|\\r\\n"
-        }
-      ]
     },
     "_space": {
       "type": "PATTERN",
@@ -301,13 +313,21 @@
         "type": "PATTERN",
         "value": "."
       }
+    },
+    "_eol": {
+      "type": "PATTERN",
+      "value": "[\\r\\n]|\\r\\n"
     }
   },
   "extras": [],
   "conflicts": [],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "_eof"
+    }
+  ],
   "inline": [],
   "supertypes": []
 }
-

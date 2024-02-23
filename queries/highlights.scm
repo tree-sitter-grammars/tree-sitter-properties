@@ -6,7 +6,11 @@
 
 (value (escape) @string.escape)
 
-(index) @number
+((index) @number
+  (#match? @number "^[0-9]+$"))
+
+((substitution (key) @constant)
+  (#match? @constant "^[A-Z0-9_]+"))
 
 (property [ "=" ":" ] @operator)
 

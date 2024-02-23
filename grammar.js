@@ -4,12 +4,14 @@
  * @license MIT
  */
 
-const EOL = /\r|\n|\r\n/;
-
 module.exports = grammar({
   name: 'properties',
 
-  extras: $ => [],
+  extras: _ => [],
+
+  externals: $ => [
+    $._eof
+  ],
 
   rules: {
     file: $ => repeat(seq(
@@ -18,7 +20,7 @@ module.exports = grammar({
         $.property,
         $.comment
       )),
-      EOL
+      choice($._eol, $._eof)
     )),
 
     property: $ => seq(
@@ -41,7 +43,7 @@ module.exports = grammar({
     ),
 
     _index: $ => seq(
-      '[', alias(/\d+/, $.index), ']'
+      '[', alias(repeat($._char), $.index), ']'
     ),
 
     value: $ => repeat1(choice(
@@ -73,16 +75,18 @@ module.exports = grammar({
       )
     ),
 
+    _linebreak: $ => seq('\\', $._eol),
+
     escape: _ => choice(
-      /\\./, /\\u[0-9a-fA-F]{4}/
+      /\\[^\r\n]/, /\\u[0-9a-fA-F]{4}/
     ),
 
     comment: _ => /[#!].*/,
 
-    _linebreak: _ => seq('\\', EOL),
-
     _space: _ => /[ \t\f]/,
 
-    _char: _ => prec(-1, /./)
+    _char: _ => prec(-1, /./),
+
+    _eol: _ => /[\r\n]|\r\n/
   }
 });

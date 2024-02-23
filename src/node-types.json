@@ -24,6 +24,11 @@
     }
   },
   {
+    "type": "index",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "key",
     "named": true,
     "fields": {},
@@ -144,10 +149,6 @@
   },
   {
     "type": "comment",
-    "named": true
-  },
-  {
-    "type": "index",
     "named": true
   },
   {
