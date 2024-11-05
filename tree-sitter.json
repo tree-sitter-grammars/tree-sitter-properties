@@ -1,0 +1,29 @@
+{
+  "grammars": [
+    {
+      "name": "properties",
+      "path": ".",
+      "scope": "source.properties",
+      "highlights": "queries/highlights.scm",
+      "tags": "queries/tags.scm",
+      "file-types": [
+        "properties"
+      ],
+      "injection-regex": "^j?properties$"
+    }
+  ],
+  "metadata": {
+    "version": "0.3.0",
+    "license": "MIT",
+    "description": "Java properties grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "ObserverOfTime",
+        "email": "chronobserver@disroot.org"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-properties"
+    }
+  }
+}

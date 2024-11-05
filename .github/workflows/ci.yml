@@ -43,10 +43,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-14]
     steps:
-      - name: Set up repository
-        uses: tree-sitter/parser-setup-action@v1.1
-        with:
-          node-version: ${{vars.NODE_VERSION}}
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@v1
       - name: Allow long paths
         if: ${{runner.os == 'Windows'}}
         shell: sh
@@ -61,7 +61,6 @@ jobs:
             **/*.properties
             !/independent-projects/tools/**
             !/devtools/project-core-extension-codestarts/**
-          ref: 8ff8180fd5d629621ee2807b32024520c7693c42
       - name: Clone Spring Boot corpus
         uses: actions/checkout@v4
         with:
@@ -69,10 +68,18 @@ jobs:
           repository: spring-projects/spring-boot
           sparse-checkout-cone-mode: false
           sparse-checkout: "**/*.properties"
-      - name: Run tests
-        uses: tree-sitter/parser-test-action@v1.2
+      - name: Run parser tests
+        uses: tree-sitter/parser-test-action@v2
+      - name: Parse sample files
+        uses: tree-sitter/parse-action@v4
+        id: parse-files
         with:
-          test-library: ${{runner.os == 'Linux'}}
-          corpus-files: |-
+          files: |-
             examples/quarkus/**/*.properties
             examples/spring-boot/**/*.properties
+      - name: Upload failures artifact
+        uses: actions/upload-artifact@v4
+        if: "!cancelled() && steps.parse-files.outcome == 'failure'"
+        with:
+          name: failures-${{runner.os}}
+          path: ${{steps.parse-files.outputs.failures}}

@@ -1,8 +1,11 @@
 /**
- * @file Tree-sitter grammar definition
+ * @file Java properties grammar for tree-sitter
  * @author ObserverOfTime
  * @license MIT
  */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
 
 module.exports = grammar({
   name: 'properties',
