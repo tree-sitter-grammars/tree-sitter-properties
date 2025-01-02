@@ -18,7 +18,7 @@ module.exports = grammar({
 
   rules: {
     file: $ => repeat(seq(
-      optional($._space),
+      repeat($._space),
       optional(choice(
         $.property,
         $.comment
@@ -26,13 +26,13 @@ module.exports = grammar({
       choice($._eol, $._eof)
     )),
 
-    property: $ => seq(
+    property: $ => prec.left(1, seq(
       $.key,
-      optional($._space),
+      repeat($._space),
       optional(choice('=', ':')),
-      optional($._space),
+      repeat($._space),
       optional($.value)
-    ),
+    )),
 
     key: $ => prec.right(
       repeat1(
