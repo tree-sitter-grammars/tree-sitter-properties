@@ -69,7 +69,7 @@ module.exports = grammar({
       '}'
     ),
 
-    _default: $ => seq(':', field('default', $._content)),
+    _default: $ => seq(':', optional(field('default', $._content))),
 
     _secret: $ => seq('::', alias($._content, $.secret)),
 
