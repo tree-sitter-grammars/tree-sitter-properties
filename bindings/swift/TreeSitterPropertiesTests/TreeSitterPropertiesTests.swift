@@ -7,6 +7,6 @@ final class TreeSitterPropertiesTests: XCTestCase {
         let parser = Parser()
         let language = Language(language: tree_sitter_properties())
         XCTAssertNoThrow(try parser.setLanguage(language),
-                         "Error loading properties grammar")
+                         "Error loading Java properties grammar")
     }
 }

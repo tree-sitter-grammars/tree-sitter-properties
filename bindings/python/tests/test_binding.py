@@ -1,11 +1,12 @@
 from unittest import TestCase
 
-import tree_sitter, tree_sitter_properties
+from tree_sitter import Language, Parser
+import tree_sitter_properties
 
 
 class TestLanguage(TestCase):
     def test_can_load_grammar(self):
         try:
-            tree_sitter.Language(tree_sitter_properties.language())
+            Parser(Language(tree_sitter_properties.language()))
         except Exception:
-            self.fail("Error loading properties grammar")
+            self.fail("Error loading Java properties grammar")

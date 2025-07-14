@@ -2,7 +2,7 @@
   "grammars": [
     {
       "name": "properties",
-      "path": ".",
+      "title": "Java properties",
       "scope": "source.properties",
       "highlights": "queries/highlights.scm",
       "tags": "queries/tags.scm",
@@ -23,7 +23,8 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-properties"
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-properties",
+      "funding": "https://github.com/sponsors/ObserverOfTime"
     }
   }
 }
