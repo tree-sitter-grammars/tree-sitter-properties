@@ -5,6 +5,7 @@
 [![matrix][matrix]](https://matrix.to/#/#nvim-treesitter:matrix.org)
 [![npm][npm]](https://www.npmjs.com/package/tree-sitter-properties)
 [![crates][crates]](https://crates.io/crates/tree-sitter-properties)
+[![pypi][pypi]](https://pypi.org/project/tree-sitter-properties/)
 
 A tree-sitter parser for Java properties files.
 
@@ -26,3 +27,4 @@ A tree-sitter parser for Java properties files.
 [matrix]: https://img.shields.io/matrix/nvim-treesitter%3Amatrix.org?logo=matrix&label=nvim-treesitter
 [npm]: https://img.shields.io/npm/v/tree-sitter-properties?logo=npm
 [crates]: https://img.shields.io/crates/v/tree-sitter-properties?logo=rust
+[pypi]: https://img.shields.io/pypi/v/tree-sitter-properties?logo=pypi&logoColor=ffd242
