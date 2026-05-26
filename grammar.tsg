@@ -1,0 +1,65 @@
+// Java properties grammar for tree-sitter (native DSL).
+// Translated from grammar.js.
+
+grammar {
+    language: "properties",
+    extras: [],
+    externals: [_eof],
+}
+
+rule file {
+    repeat(seq(
+        repeat(_space),
+        optional(choice(property, comment)),
+        choice(_eol, _eof),
+    ))
+}
+
+rule property {
+    prec_left(1, seq(
+        key,
+        repeat(_space),
+        optional(choice("=", ":")),
+        repeat(_space),
+        optional(value),
+    ))
+}
+
+rule key {
+    prec_right(0, repeat1(choice(".", _char, escape, _index)))
+}
+
+rule _index {
+    seq("[", alias(repeat(_char), index), "]")
+}
+
+rule value {
+    repeat1(choice(_char, escape, substitution, _linebreak))
+}
+
+rule substitution {
+    seq(
+        "${",
+        repeat1(choice(key, substitution)),
+        optional(choice(_default, _secret)),
+        "}",
+    )
+}
+
+rule _default { seq(":", optional(field(default, _content))) }
+
+rule _secret { seq("::", alias(_content, secret)) }
+
+rule _content { repeat1(choice(_char, escape, substitution)) }
+
+rule _linebreak { seq("\\", _eol) }
+
+rule escape { choice(regexp(r"\\[^\r\n]"), regexp(r"\\u[0-9a-fA-F]{4}")) }
+
+rule comment { regexp(r"[#!].*") }
+
+rule _space { regexp(r"[ \t\f]") }
+
+rule _char { prec(-1, regexp(r".")) }
+
+rule _eol { regexp(r"[\r\n]|\r\n") }
